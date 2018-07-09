@@ -1,19 +1,23 @@
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-import { HomePage } from '../home/home';
+import { ContactsPage } from '../contacts/contacts';
+import { ChatsPage } from '../chats/chats';
+import { ITabItem } from '../../shared/models/tabs/tabitem.model';
 
 @Component({
-  templateUrl: 'tabs.html'
+    templateUrl: 'tabs.html'
 })
 export class TabsPage {
+    tabs: Array<ITabItem>;
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
+    constructor() {
+        this.setTabs();
+    }
 
-  constructor() {
-
-  }
+    private setTabs(): void {
+        this.tabs = [
+            { title: "chats", icon: "chatbubbles", page: ChatsPage },
+            { title: "contacts", icon: "contacts", page: ContactsPage }
+        ]
+    }
 }
