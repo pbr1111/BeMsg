@@ -21,14 +21,27 @@ page-login {
   
       ion-item {
           border-radius: 30px !important;
-          padding-left: 30px !important;
+          padding: 0 30px !important;
           font-size: 0.9em;
           margin-bottom: 10px;
           border: 1px solid #dcdcdc !important;
           box-shadow: none !important;
 
+          .item-inner {
+            padding-right: 0 !important;
+            border-bottom: 0 !important;
+
+            .input-wrapper {
+              -webkit-align-self: flex-end;
+              -ms-flex-item-align: flex-end;
+              align-self: flex-end;
+            }
+          }
+
           input {
             outline: none;
+            margin: 14px auto;
+            width: 100%;
           }
       }
   
@@ -45,6 +58,7 @@ page-login {
       .submit-btn {
         background: #51CFB1;
         border-radius: 30px !important;
+        height: 4.4rem;
       }
   }
 }
