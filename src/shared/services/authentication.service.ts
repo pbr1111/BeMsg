@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthenticationService {
-    private currentUser: firebase.User = null;
 
     constructor(public afAuth: AngularFireAuth) {
 
@@ -19,8 +18,11 @@ export class AuthenticationService {
     public loginUser(email: string, password: string): Observable<boolean> {
         return Observable.fromPromise(this.afAuth.auth.signInWithEmailAndPassword(email, password))
             .map(result => {
-                this.currentUser = result.user;
                 return true;
             });
+    }
+
+    public logout(): Observable<void> {
+        return Observable.fromPromise(this.afAuth.auth.signOut());
     }
 }

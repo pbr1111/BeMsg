@@ -25,6 +25,6 @@ export class LoginPage {
         let data = this.loginForm.value;
 
         this.authentication.loginUser(data.email, data.password)
-            .subscribe(() => { }, error => this.page.showError(error));
+            .subscribe({ error: error => this.page.showError(error) });
     }
 }

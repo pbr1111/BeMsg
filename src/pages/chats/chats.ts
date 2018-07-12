@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PageService } from '../../shared/services/page.service';
+import { AuthenticationService } from '../../shared/services/authentication.service';
 
 @Component({
     selector: 'page-chats',
@@ -7,8 +8,12 @@ import { PageService } from '../../shared/services/page.service';
 })
 export class ChatsPage {
 
-    constructor(private page: PageService) {
+    constructor(private page: PageService, private authentication: AuthenticationService) {
 
     }
 
+    public logout(): void {
+        this.page.showLoading();
+        this.authentication.logout().subscribe({ complete: () => this.page.hideLoading() });
+    }
 }
