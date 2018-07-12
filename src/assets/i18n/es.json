@@ -1,4 +1,7 @@
 {
     "home": "Chats",
-    "contacts": "Contactos"
+    "contacts": "Contactos",
+    "login": "Iniciar sesión",
+    "pleaseWait": "Por favor espere...",
+    "fail": "Error"
 }

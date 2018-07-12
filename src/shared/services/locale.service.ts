@@ -2,6 +2,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModuleConfig, TranslateService } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 const defaultLanguage = 'en';
 
@@ -13,6 +14,10 @@ export class LocaleService {
     public initialize(): void {
         this.translate.setDefaultLang(defaultLanguage);   
         this.setBrowserLanguage();  
+    }
+
+    public getTranslation(key: string): string {
+        return this.translate.instant(key);
     }
 
     private setBrowserLanguage(): void {

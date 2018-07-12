@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { PageService } from '../../shared/services/page.service';
 
 @Component({
     selector: 'page-chats',
@@ -7,7 +7,7 @@ import { NavController } from 'ionic-angular';
 })
 export class ChatsPage {
 
-    constructor(public navCtrl: NavController) {
+    constructor(private page: PageService) {
 
     }
 

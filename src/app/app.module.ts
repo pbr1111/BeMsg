@@ -1,3 +1,5 @@
+import { LoginPage } from '../pages/login/login';
+import { Contacts } from '@ionic-native/contacts';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -16,7 +18,8 @@ import { SharedModule } from '../shared/modules/shared.module';
     MyApp,
     ContactsPage,
     ChatsPage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -28,11 +31,13 @@ import { SharedModule } from '../shared/modules/shared.module';
     MyApp,
     ContactsPage,
     ChatsPage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Contacts,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

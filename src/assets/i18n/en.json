@@ -1,4 +1,7 @@
 {
     "chats": "Chats",
-    "contacts": "Contacts"
+    "contacts": "Contacts",
+    "login": "Login",
+    "pleaseWait": "Please wait...",
+    "fail": "Fail"
 }

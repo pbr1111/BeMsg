@@ -1,14 +1,23 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Contacts, Contact } from '@ionic-native/contacts';
+import { PageService } from '../../shared/services/page.service';
 
 @Component({
-  selector: 'page-contacts',
-  templateUrl: 'contacts.html'
+    selector: 'page-contacts',
+    templateUrl: 'contacts.html'
 })
 export class ContactsPage {
+    userContacts: Array<Contact>;
 
-  constructor(public navCtrl: NavController) {
+    constructor(private page: PageService, private contacts: Contacts) {
+        this.loadContactsFromDevice();
+    }
 
-  }
+    private loadContactsFromDevice(): void {    
+        this.contacts.find(['*']).then(this.onLoadContactsCompleted);
+    }
 
+    private onLoadContactsCompleted(contactsList: Array<Contact>): void {
+        this.userContacts = contactsList;
+    }
 }
