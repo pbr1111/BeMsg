@@ -11,9 +11,13 @@ page-login {
     }
   
     ion-row {
-        align-items: center;
-        text-align: center;
+      align-items: center;
+      text-align: center;
+
+      img {
+        max-height: 20rem; 
       }
+    }
   
       ion-item {
           border-radius: 30px !important;

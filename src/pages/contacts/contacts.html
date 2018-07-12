@@ -6,10 +6,12 @@
 
 <ion-content>
   <ion-list>
-    <ion-list-header>Header</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      Item
+    <ion-item *ngFor="let contact of userContacts">
+      <ion-avatar item-start>
+        <img [src]="contact.photos[0].value" />
+      </ion-avatar>
+      <h2>{{contact.displayName}}</h2>
+      <h3>{{contact.phoneNumbers[0].value}}</h3>
     </ion-item>
   </ion-list>
 </ion-content>
