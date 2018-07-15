@@ -15,3 +15,13 @@
         }
     }
 }
+
+ion-app {
+    ion-loading {
+        opacity: initial !important;
+    }
+
+    ion-alert ~ ion-loading {
+        opacity: 0 !important;
+    }
+}

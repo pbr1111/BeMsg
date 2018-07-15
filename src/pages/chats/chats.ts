@@ -14,6 +14,8 @@ export class ChatsPage {
 
     public logout(): void {
         this.page.wait();
-        this.authentication.logout().subscribe({ complete: () => this.page.continue() });
+        this.authentication.logout()
+            .finally(() => this.page.continue())
+            .subscribe();
     }
 }
