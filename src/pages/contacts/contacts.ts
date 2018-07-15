@@ -3,6 +3,7 @@ import { DomSanitizer, SafeValue } from '@angular/platform-browser';
 import { Contacts, Contact } from '@ionic-native/contacts';
 import { PageService } from '../../shared/services/page.service';
 import { IContact } from '../../shared/models/contacts/contact.model';
+import { ArrayHelper } from '../../shared/helpers/array.helper';
 
 @Component({
     selector: 'page-contacts',
@@ -12,11 +13,15 @@ export class ContactsPage {
     userContacts: Array<IContact> = [];
 
     constructor(private page: PageService, private contacts: Contacts, private sanitizer: DomSanitizer) {
+        
+    }
+
+    ionViewLoaded(): void {
         this.loadContactsFromDevice();
     }
 
     private loadContactsFromDevice(): void {
-        this.page.showLoading();
+        this.page.wait();
         this.contacts.find(['displayName', 'photos', 'phoneNumbers'], { multiple: true })
             .then(contactList => this.onLoadContactsCompleted(contactList));
     }
@@ -26,7 +31,7 @@ export class ContactsPage {
             for (let contact of contactsList) {
                 if (contact.displayName != null && contact.phoneNumbers != null && contact.phoneNumbers.length > 0) {
                     let phone = contact.phoneNumbers[0].value;
-                    let photoUrl: string | SafeValue = "assets/imgs/user.png";
+                    let photoUrl: string | SafeValue = "assets/imgs/user.svg";
                     if (contact.photos != null && contact.photos.length > 0) {
                         photoUrl = this.sanitizer.bypassSecurityTrustUrl(contact.photos[0].value);
                     }
@@ -39,16 +44,8 @@ export class ContactsPage {
             }
         }
         if (this.userContacts.length > 0) {
-            this.userContacts = this.userContacts.sort((contact1, contact2) => {
-                if (contact1.displayName > contact2.displayName) {
-                    return 1;
-                }
-                if (contact1.displayName < contact2.displayName) {
-                    return -1;
-                }
-                return 0;
-            });
+            this.userContacts = ArrayHelper.sort(this.userContacts, contact => contact.displayName);
         }
-        this.page.hideLoading();
+        this.page.continue();
     }
 }

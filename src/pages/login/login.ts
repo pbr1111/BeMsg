@@ -18,13 +18,19 @@ export class LoginPage {
             email: ['', Validators.compose([Validators.required, Validators.email])],
             password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
         });
+
+        this.page.wait();
+        setTimeout(() => this.page.continue(), 2000);
     }
 
     public login() {
-        this.page.showLoading();
+        this.page.wait();
         let data = this.loginForm.value;
 
         this.authentication.loginUser(data.email, data.password)
-            .subscribe({ error: error => this.page.showError(error) });
+            .subscribe({ 
+                error: error => this.page.showError(error),
+                complete: () => this.page.continue()
+            });
     }
 }

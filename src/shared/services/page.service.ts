@@ -1,36 +1,25 @@
+import { CursorService } from './cursor.service';
 import { LocaleService } from './locale.service';
-import { AlertController, LoadingController, NavController, Loading, App } from 'ionic-angular';
+import { AlertController} from 'ionic-angular';
 import { Injectable } from "@angular/core";
-
-const minLoadingMs: number = 1000;
 
 @Injectable()
 export class PageService {
-    loading: Loading;
-    navCtrl: NavController;
-
-    constructor(private app: App,
-        private alertCtrl: AlertController,
-        private loadingCtrl: LoadingController,
+    constructor(private alertCtrl: AlertController,
+        private cursor: CursorService,
         public locale: LocaleService) {
             
-        this.navCtrl = app.getActiveNav();
     }
 
-    public showLoading(dissmissOnPageChange: boolean = false): void {
-        this.loading = this.loadingCtrl.create({
-            content: this.locale.getTranslation("pleaseWait"),
-            dismissOnPageChange: dissmissOnPageChange
-        });
-        this.loading.present();
+    public wait(): void {
+        this.cursor.show();
     }
 
-    public hideLoading(): void {
-        setTimeout(() => this.loading.dismissAll(), minLoadingMs);
+    public continue(): void {
+        this.cursor.hide();
     }
 
-    public showError(text: string) {
-        this.loading.dismiss();
+    public showError(text: string): void {
         let alert = this.alertCtrl.create({
             title: this.locale.getTranslation("fail"),
             subTitle: text,

@@ -13,7 +13,7 @@ export class ChatsPage {
     }
 
     public logout(): void {
-        this.page.showLoading();
-        this.authentication.logout().subscribe({ complete: () => this.page.hideLoading() });
+        this.page.wait();
+        this.authentication.logout().subscribe({ complete: () => this.page.continue() });
     }
 }

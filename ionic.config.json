@@ -1,6 +1,6 @@
 {
   "name": "BeMsg",
-  "app_id": "40a9c2a0",
+  "app_id": "",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

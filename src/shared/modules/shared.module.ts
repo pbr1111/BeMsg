@@ -1,3 +1,4 @@
+import { CursorService } from './../services/cursor.service';
 import { PageService } from '../services/page.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -25,6 +26,7 @@ import { firebaseConfig } from './../config/firebase.config';
         AngularFireAuth,
         AuthenticationService,
         FirebaseService,
+        CursorService,
         PageService
     ]
 })
