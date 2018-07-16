@@ -1,9 +1,5 @@
 .custom-loading-cursor {
 
-    ion-backdrop {
-        opacity: 0.4 !important;
-    }
-
     .loading-wrapper {
         background: transparent;
         box-shadow: initial;
@@ -12,6 +8,10 @@
         ion-spinner {
             height: 5rem;
             width: 5rem;
+
+            circle {
+                stroke: white;
+            }
         }
     }
 }

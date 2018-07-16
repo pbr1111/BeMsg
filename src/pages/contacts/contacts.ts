@@ -13,10 +13,10 @@ export class ContactsPage {
     userContacts: Array<IContact> = [];
 
     constructor(private page: PageService, private contacts: Contacts, private sanitizer: DomSanitizer) {
-        
+
     }
 
-    ionViewLoaded(): void {
+    ionViewDidLoad(): void {
         this.loadContactsFromDevice();
     }
 

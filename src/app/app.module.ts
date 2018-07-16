@@ -1,3 +1,4 @@
+import { Diagnostic } from '@ionic-native/diagnostic';
 import { LoginPage } from '../pages/login/login';
 import { Contacts } from '@ionic-native/contacts';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -38,6 +39,7 @@ import { SharedModule } from '../shared/modules/shared.module';
     StatusBar,
     SplashScreen,
     Contacts,
+    Diagnostic,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
