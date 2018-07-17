@@ -4,6 +4,7 @@ import { Contacts, Contact } from '@ionic-native/contacts';
 import { PageService } from '../../shared/services/page.service';
 import { IContact } from '../../shared/models/contacts/contact.model';
 import { ArrayHelper } from '../../shared/helpers/array.helper';
+import { normalizeURL } from 'ionic-angular';
 
 @Component({
     selector: 'page-contacts',
@@ -33,7 +34,7 @@ export class ContactsPage {
                     let phone = contact.phoneNumbers[0].value;
                     let photoUrl: string | SafeValue = "assets/imgs/user.svg";
                     if (contact.photos != null && contact.photos.length > 0) {
-                        photoUrl = this.sanitizer.bypassSecurityTrustUrl(contact.photos[0].value);
+                        photoUrl = this.sanitizer.bypassSecurityTrustUrl(normalizeURL(contact.photos[0].value));
                     }
                     this.userContacts.push({
                         displayName: contact.displayName,
